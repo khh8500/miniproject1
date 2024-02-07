@@ -98,11 +98,15 @@ public String login(UserRequest.LoginDTO requestDTO){
         if(sessionUser==null){
             return "redirect:/loginForm";
         }
+        request.setAttribute("username", userRepository.findById(sessionUser.getId()).getUsername());
+        request.setAttribute("email", userRepository.findById(sessionUser.getId()).getEmail());
+
         return "user/updateForm";
     }
 
     @GetMapping("/logout")
     public String logout() {
+        session.invalidate();
         return "redirect:/";
     }
 }
