@@ -15,13 +15,26 @@ public class BoardController {
     private final HttpSession session;
     private final BoardRepository boardRepository;
 
+
+
+
     //?title=제목1@
     //title
     //파싱방법이 똑같아서 바로 받을 수 있다 String title, String content 이런식으로
-    @PostMapping("/board/{id}/update")
+
+
     public String update(@PathVariable int id, BoardRequest.UpdateDTO requestDTO){
         //1. 인증체크
+        User sessionUser=(User) session.getAttribute("sessionUser");
+        if(sessionUser==null){
+            return "redirect:/loginForm";
+        }
         //2. 권한체크
+        Board board = boardRepository.findById(id);
+
+        if(board.getUserId()!=sessionUser.getId()){
+            return "error/403";
+        }
         //3. 핵심로직
         //update board_tb set title = ?, content = ? where id = ?;
         boardRepository.update(requestDTO, id);
