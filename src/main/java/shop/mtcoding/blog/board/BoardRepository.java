@@ -5,6 +5,7 @@ import jakarta.persistence.Query;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.GetMapping;
 
 import java.util.List;
 
@@ -13,7 +14,7 @@ import java.util.List;
 public class BoardRepository {
     private final EntityManager em;
 
-    
+
 
     @Transactional
     public void save(BoardRequest.SaveDTO requestDTO, int userId){
