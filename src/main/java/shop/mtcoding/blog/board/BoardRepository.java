@@ -13,6 +13,8 @@ import java.util.List;
 public class BoardRepository {
     private final EntityManager em;
 
+    
+
     @Transactional
     public void save(BoardRequest.SaveDTO requestDTO, int userId){
         Query query = em.createNativeQuery("insert into board_tb(title, content, user_id, created_at) values(?, ?, ?, now())");
@@ -28,8 +30,15 @@ public class BoardRepository {
         return query.getResultList();
     }
 
+    public Board findById(int id){
+        Query query = em.createNativeQuery("select * from board_tb  where id = ?", Board.class);
+        query.setParameter(1, id);
 
-    public BoardResponse.DetailDTO findById(int idx) {
+        Board board = (Board) query.getSingleResult();
+        return board;
+    }
+
+    public BoardResponse.DetailDTO findByIdWithUser(int idx) {
         Query query = em.createNativeQuery("select b.id, b.title, b.content, b.user_id, u.username from board_tb b inner join user_tb u on b.user_id = u.id where b.id = ?");
         query.setParameter(1, idx);
 
@@ -55,5 +64,12 @@ public class BoardRepository {
         responseDTO.setUsername(username);
 
         return responseDTO;
+    }
+    @Transactional
+    public void delete(int id) {
+        Query query = em.createNativeQuery("delete from board_tb where id = ?", Board.class);
+        query.setParameter(1, id);
+
+        query.executeUpdate();
     }
 }
