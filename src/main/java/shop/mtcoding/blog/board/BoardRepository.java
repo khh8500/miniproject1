@@ -6,7 +6,9 @@ import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.bind.annotation.GetMapping;
+import shop.mtcoding.blog.reply.Reply;
 
+import java.sql.Timestamp;
 import java.util.List;
 
 @RequiredArgsConstructor
@@ -15,7 +17,7 @@ public class BoardRepository {
     private final EntityManager em;
 
     @Transactional
-    public void update(BoardRequest.UpdateDTO requestDTO, int userId){
+    public void update(BoardRequest.UpdateDTO requestDTO, int userId) {
         Query query = em.createNativeQuery("update board_tb set title = ?, content = ? where id = ?");
         query.setParameter(1, requestDTO.getTitle());
         query.setParameter(2, requestDTO.getContent());
@@ -25,7 +27,7 @@ public class BoardRepository {
     }
 
     @Transactional
-    public void save(BoardRequest.SaveDTO requestDTO, int userId){
+    public void save(BoardRequest.SaveDTO requestDTO, int userId) {
         Query query = em.createNativeQuery("insert into board_tb(title, content, user_id, created_at) values(?, ?, ?, now())");
         query.setParameter(1, requestDTO.getTitle());
         query.setParameter(2, requestDTO.getContent());
@@ -39,7 +41,7 @@ public class BoardRepository {
         return query.getResultList();
     }
 
-    public Board findById(int id){
+    public Board findById(int id) {
         Query query = em.createNativeQuery("select * from board_tb  where id = ?", Board.class);
         query.setParameter(1, id);
 
@@ -74,6 +76,7 @@ public class BoardRepository {
 
         return responseDTO;
     }
+
     @Transactional
     public void delete(int id) {
         Query query = em.createNativeQuery("delete from board_tb where id = ?", Board.class);

@@ -22,7 +22,7 @@ public class BoardController {
     //title
     //파싱방법이 똑같아서 바로 받을 수 있다 String title, String content 이런식으로
 
-    @GetMapping("/board/{id}/update")
+    @PostMapping("/board/{id}/update")
     public String update(@PathVariable int id, BoardRequest.UpdateDTO requestDTO){
         //1. 인증체크
         User sessionUser=(User) session.getAttribute("sessionUser");
