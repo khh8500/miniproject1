@@ -20,9 +20,21 @@ public class BoardRepository {
         Query query = em.createNativeQuery("select count(*) from board_tb ");
         return (Long) query.getSingleResult();
     }
+    public Long count(String keyword) {
+        Query query = em.createNativeQuery("select count(*) from board_tb where title like ? ");
+        query.setParameter(1, "%"+keyword+"%");
+        return (Long) query.getSingleResult();
+    }
     public List<Board> findAll(Integer page) {
         Query query = em.createNativeQuery("select * from board_tb order by id desc limit ?, 3", Board.class);
         query.setParameter(1, page*3);//한페이지에 게시글 3개씩 나와야해서
+        return query.getResultList();
+    }
+
+    public List<Board> findAll(Integer page, String keyword) {
+        Query query = em.createNativeQuery("select * from board_tb where title like ? order by id desc limit ?, 3", Board.class);
+        query.setParameter(1, "%"+keyword+"%");
+        query.setParameter(2, page*3);
         return query.getResultList();
     }
 
