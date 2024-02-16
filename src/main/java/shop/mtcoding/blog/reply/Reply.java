@@ -1,6 +1,7 @@
 package shop.mtcoding.blog.reply;
 
 import jakarta.persistence.*;
+import jakarta.servlet.http.HttpSession;
 import lombok.Data;
 
 import java.time.LocalDateTime;

@@ -16,6 +16,7 @@ import java.util.List;
 public class BoardRepository {
     private final EntityManager em;
 
+
     @Transactional
     public void update(BoardRequest.UpdateDTO requestDTO, int userId) {
         Query query = em.createNativeQuery("update board_tb set title = ?, content = ? where id = ?");
