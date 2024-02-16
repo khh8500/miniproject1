@@ -122,11 +122,26 @@ public class BoardController {
         session.invalidate();
         return "redirect:/";
     }
-    @GetMapping({ "/", "/board" })
-    public String index(HttpServletRequest request) {
 
-        List<Board> boardList = boardRepository.findAll();
+    //localhost:8080?page=1 -> page 값이 1
+    //localhost:8080 ->page 값이 0
+    @GetMapping({ "/" })
+    public String index(HttpServletRequest request, @RequestParam(value = "page", defaultValue = "0") Integer page) {
+
+
+        List<Board> boardList = boardRepository.findAll(page);
+
+        int count= boardRepository.count().intValue();
+        int namerge=8%3==0 ? 0:1;
+        int allPageCount=count/3+namerge;
+
         request.setAttribute("boardList", boardList);
+        request.setAttribute("first",page==0);
+        request.setAttribute("last",allPageCount==page+1);
+        request.setAttribute("prev",page-1);
+        request.setAttribute("next",page+1);
+
+
 
         return "index";
     }
