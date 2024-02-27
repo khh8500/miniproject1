@@ -5,6 +5,8 @@ import jakarta.servlet.http.HttpSession;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import shop.mtcoding.blog.love.LoveRepository;
+import shop.mtcoding.blog.love.LoveResponse;
 import shop.mtcoding.blog.reply.ReplyRepository;
 import shop.mtcoding.blog.user.User;
 
@@ -16,6 +18,7 @@ public class BoardController {
     private final HttpSession session;
     private final BoardRepository boardRepository;
     private final ReplyRepository replyRepository;
+    private final LoveRepository loveRepository;
 
 
     //?title=제목1@
@@ -180,6 +183,14 @@ public class BoardController {
 
         request.setAttribute("board", boardDTO);
         request.setAttribute("replyList", replyList);
+
+        if(sessionUser == null){
+            LoveResponse.DetailDTO loveDetailDTO = loveRepository.findLove(id);
+            request.setAttribute("love", loveDetailDTO);
+        }else{
+            LoveResponse.DetailDTO loveDetailDTO = loveRepository.findLove(id, sessionUser.getId());
+            request.setAttribute("love", loveDetailDTO);
+        }
 
         return "board/detail";
     }

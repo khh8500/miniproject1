@@ -6,6 +6,7 @@ import lombok.RequiredArgsConstructor;
 import org.mindrot.jbcrypt.BCrypt;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.*;
+import shop.mtcoding.blog._core.util.ApiUtil;
 import shop.mtcoding.blog._core.util.Script;
 
 
@@ -16,6 +17,18 @@ public class UserController {
     // 자바는 final 변수는 반드시 초기화가 되어야함.
     private final UserRepository userRepository;
     private final HttpSession session;
+
+    @GetMapping("/api/username-same-check")
+    public @ResponseBody ApiUtil<?> usernameSameCheck(String username){
+
+        User user=userRepository.findByUsername(username);
+        System.out.println(username);
+        if(user ==null){
+            return new ApiUtil<>(true);
+        }else{
+            return new ApiUtil<>(false);
+        }
+    }
     @PostMapping("/user/update")
     public String update(UserRequest.updateDTO requestDTO, HttpServletRequest request){
 
@@ -55,17 +68,13 @@ public String login(UserRequest.LoginDTO requestDTO){
 
 
     System.out.println(requestDTO); // toString -> @Data
-
-    String rawPassword= requestDTO.getPassword();
-    String encPassword= BCrypt.hashpw(rawPassword, BCrypt.gensalt());//레인보우 테이블에 안털림
-    requestDTO.setPassword(encPassword);
     if(requestDTO.getUsername().length() < 3){
         throw new RuntimeException("유저네임 길이가 너무 짧아요"); // ViewResolver 설정이 되어 있음. (앞 경로, 뒤 경로)
     }
 
     User user = userRepository.findByUsername(requestDTO.getUsername());
 
-    if(BCrypt.checkpw(requestDTO.getPassword(), user.getPassword())){
+    if(!BCrypt.checkpw(requestDTO.getPassword(), user.getPassword())){
         throw new RuntimeException("패스워드가 틀렸습니다");
     }
 
@@ -78,12 +87,16 @@ public String login(UserRequest.LoginDTO requestDTO){
     @PostMapping("/join")
     public String join(UserRequest.JoinDTO requestDTO){ //ResponseBody는 메시지를 리턴
         System.out.println(requestDTO);
+        String rawPassword= requestDTO.getPassword();
+        String encPassword= BCrypt.hashpw(rawPassword, BCrypt.gensalt());//레인보우 테이블에 안털림
+        requestDTO.setPassword(encPassword);
         try {
             userRepository.save(requestDTO); // 모델에 위임하기
         }catch (Exception e){
             throw new RuntimeException("아이디가 중복되었어요");
         }
-        return "return:/loginForm";
+        System.out.println(requestDTO);
+        return "redirect:/loginForm";
     }
 
     @GetMapping("/joinForm")

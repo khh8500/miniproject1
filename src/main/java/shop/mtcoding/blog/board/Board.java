@@ -8,6 +8,7 @@ import java.time.LocalDateTime;
 @Table(name="board_tb")
 @Data
 @Entity // 테이블 생성하기 위해 필요한 어노테이션
+
 public class Board { // User 1 -> Board N
     @Id // PK 설정
     @GeneratedValue(strategy = GenerationType.IDENTITY) // auto_increment 전략

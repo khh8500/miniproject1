@@ -4,6 +4,10 @@ import org.junit.jupiter.api.Test;
 import org.mindrot.jbcrypt.BCrypt;
 
 public class BCryptTest {
+    @Test
+    public void checkpw(){
+        System.out.println((BCrypt.checkpw("1234", "$2a$10$fZjd/L.hpXphkc7BngLTXOvTMWN/3YueZFg9kMEchwwmIkiBRQ0jC")));
+    }
 
     @Test
     public void gensal_test(){
