@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 부트스트랩 cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 제이쿼리 cdn-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 폰트어썸 cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <input type="hidden" id="current" val="siteMain" />
+        <nav
+            class="sj_full_container navbar navbar-light navcolor d-flex justify-content-around sticky-top border-bottom align-self-center py-4">
+            <div class="container d-flex justify-content-between">
+                <a class="navbar-brand fs-2" href="#">
+                    <img src="/images/logo.png" alt="로고" width="100%;" height="100px;"
+                        class="d-inline-block align-text-top" />
+                </a>
+                <div>
+                    <ul class="nav link-dark d-flex justify-content-end">
+                        <!-- <li class="nav-item init_border" id="">
+                        <a class="nav-link link-dark" href="/view/person/loginForm.html">개인로그인</a>
+                    </li>
+                    <li class="nav-item init_border" id="">
+                        <a class="nav-link link-dark" href="/view/company/loginForm.html">기업로그인</a>
+                    </li> -->
+                        <li class="nav-item init_border" id="">
+                            <a class="nav-link link-dark" href="/view/person/info.html">마이페이지</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="/view/index.html">로그아웃</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- header -->
+    <div class="container d-flex">
+        <div class=" mx-2 pb-4 w-100">
+            <div class="border border-tertiary p-5 rounded shadow">
+                <h1>저는 코딩을 잘 합니다.</h1>
+                <div class="d-flex justify-content-start mx-2">
+                    <!-- <div>
+                        공개 여부 설정 &nbsp &nbsp| &nbsp&nbsp
+                    </div> -->
+                    <div class="form-check d-flex justify-content-center">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                            checked required>
+                        <label class="form-check-label" for="flexRadioDefault1">공개&nbsp&nbsp&nbsp&nbsp</label>
+                    </div>
+                    <div class="form-check d-flex justify-content-center">
+                        <input class="form-check-input" type="radio" name="flexRadioDefault" id="flexRadioDefault1"
+                            required>
+                        <label class="form-check-label" for="flexRadioDefault1">비공개</label>
+                    </div>
+                </div>
+                <hr>
+
+                <div class="d-flex justify-content-center">
+                    <div style="width: 85%;">
+                        <div class="jh_resume_flexbox mt-3">
+                            <!-- 이미지를 올리면 그게 올라가고 올리지 않으면 기본 프로필이 올라감 -->
+                            <img src="/images/person04.jpg" alt="프로필 사진" style="width: 188px; height: 226px;">
+                            <table class="resume_table">
+                                <tr>
+                                    <td>이름</td>
+                                    <td>양승호</td>
+                                </tr>
+                                <tr>
+                                    <td>생년월일</td>
+                                    <td>1996-02-01</td>
+                                </tr>
+                                <tr>
+                                    <td>연락처</td>
+                                    <td>010-1234-5678</td>
+                                </tr>
+                                <tr>
+                                    <td>주소</td>
+                                    <td>부산시 부산진구 모처</td>
+                                </tr>
+                                <tr>
+                                    <td>이메일</td>
+                                    <td>ssar@nate.com</td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <h4>포트폴리오 주소</h4>
+                            <input type="url" class="form-control mt-2" id="" style="display: block;"
+                                value="github.com/sdsdfsdf" readOnly>
+                        </div>
+                        <div class="mt-5 jh_resume_skill">
+                            <h4>기술스택</h4>
+                            <div>
+                                <ul>
+                                    <li>JAVA</li>
+                                    <li>Flutter</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-5 w-100">
+                            <h4>자기소개</h4>
+                            <textarea name="" class="w-100 opacity-50" rows="10" readOnly>안녕 내 이름은 예삐예삐야.
+                         </textarea>
+                        </div>
+                        <div class="d-flex justify-content-center ">
+                            <a href="/view/person/updateResumeForm.html" class="btn btn-outline-success mt-3 mb-3"
+                                style="width: 100%">수정하기</a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <!-- list-group( 오른쪽 바로가기) 시작 -->
+        <div class="list-group mx-2">
+            <a href="/view/person/info.html" class="list-group-item shadow " style="width: 150px;">회원정보관리</a>
+            <a href="/view/person/resumes.html" class="list-group-item shadow">이력서관리</a>
+            <a href="/view/person/scrap.html" class="list-group-item hs_list_effect shadow">스크랩한 공고</a>
+            <a href="/view/person/scoutEmails.html" class="list-group-item shadow">받은 제안</a>
+            <a href="/view/person/history.html" class="list-group-item shadow">지원 현황</a>
+        </div>
+        <!-- list-group( 오른쪽 바로가기) 끝 -->
+    </div>
+    <footer class="border-top  bg-light">
+        <div class="sj_full_container py-5 text-center bottom-0" style="font-size: 12px;">
+            Copyright© KDT-1 <br /><br />
+            <a class="link-dark" href="#">고객센터</a> </br>
+            000-0000-0000 (평일 09:00~19:00, 주말공휴일 휴무)<br />
+            help@xxxx.co.kr<br />
+            부산 해운대구 XX동<br />
+        </div>
+    </footer>
+</body>
+
+</html>

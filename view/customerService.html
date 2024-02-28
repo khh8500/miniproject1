@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 부트스트랩 cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 제이쿼리 cdn-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 폰트어썸 cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <header>
+        <input type="hidden" id="current" val="siteMain" />
+        <nav
+            class="sj_full_container navbar navbar-light navcolor d-flex justify-content-around sticky-top border-bottom align-self-center py-4">
+            <div class="container d-flex justify-content-between">
+                <a class="navbar-brand fs-2" href="#">
+                    <img src="/images/logo.png" alt="로고" width="100%;" height="100px;"
+                        class="d-inline-block align-text-top" />
+                </a>
+                <div>
+                    <ul class="nav link-dark d-flex justify-content-end">
+                        <li class="nav-item init_border" id="">
+                            <a class="nav-link link-dark" href="/view/person/loginForm.html">개인로그인</a>
+                        </li>
+                        <li class="nav-item init_border" id="">
+                            <a class="nav-link link-dark" href="/view/company/loginForm.html">기업로그인</a>
+                        </li>
+                        <li class="nav-item init_border" id="">
+                            <a class="nav-link link-dark" href="#">마이페이지</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link link-dark" href="/view/index.html">로그아웃</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+    <!-- header -->
+    <div class="container rounded-4 border border-tertiary mt-5 mb-5 justify-content-center shadow"
+        style="width: 1300px; height:1000px;">
+        <div class="row justify-content-center">
+            <div class="col-12">
+                <h2 class="text-center mt-5"><b>자주 묻는 질문</b></h2>
+                <hr class="mx-auto mt-5" style="width: 1160px;">
+            </div>
+            <div class="row row-cols-2 mt-4 justify-content-center">
+                <!-- 개인 회원 FAQ 시작 -->
+                <div class="col-6 border-borderless px-4" style="width: 600px;">
+                    <div class="badge rounded-pill init_color text-dark mt-5 mb-3 text-center border-borderless d-flex align-items-center justify-content-center"
+                        style="height: 60px; font-size: 25px;"><b>개인 회원
+                            FAQ</b>
+                    </div>
+                    <div class="accordion mb-5" id="accordionExample1">
+                        <!-- 반복문: 개인 회원 FAQ 시작 -->
+                        <div class="accordion-item">
+                            <h2 class="accordion-header" id="">
+                                <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                    data-bs-target="#person-collapse${loop.index}" aria-expanded="false"
+                                    aria-controls="person-collapse${loop.index}">
+                                    질문
+                                </button>
+                            </h2>
+                            <div id="person-collapse${loop.index}" class="accordion-collapse collapse"
+                                aria-labelledby="person-heading${loop.index}" data-bs-parent="#accordionExample">
+                                <div class="accordion-body">
+                                    답변
+                                </div>
+                            </div>
+                        </div>
+                        <!-- 반복문: 개인 회원 FAQ 끝 -->
+                    </div>
+                </div>
+                <!-- 개인 회원 FAQ 끝 -->
+                <!-- 기업 회원 FAQ 시작 -->
+                <div class="col-6 border-borderless px-4" style="width: 600px;">
+                    <div class="badge rounded-pill mt-5 mb-3 init_color text-dark text-center border-borderless d-flex align-items-center justify-content-center"
+                        style="height: 60px; font-size: 25px;"><b>기업 회원
+                            FAQ</b>
+                    </div>
+                    <div class="accordion mb-5" id="accordionExample2">
+                        <c:forEach items="${companyFAQ}" var="cFAQ" varStatus="loop">
+                            <div class="accordion-item">
+                                <h2 class="accordion-header" id="company-heading${loop.index}">
+                                    <button class="accordion-button collapsed" type="button" data-bs-toggle="collapse"
+                                        data-bs-target="#company-collapse${loop.index}" aria-expanded="false"
+                                        aria-controls="company-collapse${loop.index}">
+                                        질문
+                                    </button>
+                                </h2>
+                                <div id="company-collapse${loop.index}" class="accordion-collapse collapse"
+                                    aria-labelledby="company-heading${loop.index}" data-bs-parent="#accordionExample">
+                                    <div class="accordion-body">
+                                        답변
+                                    </div>
+                                </div>
+                            </div>
+                        </c:forEach>
+                    </div>
+                </div>
+                <!-- 기업 회원 FAQ 끝 -->
+            </div>
+        </div>
+    </div>
+    <footer class="border-top  bg-light">
+        <div class="sj_full_container py-5 text-center bottom-0" style="font-size: 12px;">
+            Copyright© KDT-1 <br /><br />
+            <a class="link-dark" href="#">고객센터</a> </br>
+            000-0000-0000 (평일 09:00~19:00, 주말공휴일 휴무)<br />
+            help@xxxx.co.kr<br />
+            부산 해운대구 XX동<br />
+        </div>
+    </footer>
+</body>
+
+</html>

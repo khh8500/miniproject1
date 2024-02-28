@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <!-- 부트스트랩 cdn -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet" />
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- 제이쿼리 cdn-->
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.7.1/jquery.min.js"></script>
+    <!-- 폰트어썸 cdn-->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.1/css/all.min.css" />
+</head>
+
+<body>
+    <!-- 이게 왜 person일까? -->
+    <div class="container justify-content-center mt-4">
+        <div class="d-flex justify-content-between w-100">
+            <div class="border hs_content_box w-100 mx-2 mt-4 rounded shadow">
+                <div class="px-5 pt-5 pb-2">
+                </div>
+                <div class="px-5">
+                    <h3>돈 많이 벌거야</h3>
+                    <hr class="d-inline-flex w-100">
+                    <div class="pt-2 mt-3">
+                        <div class="border border-tertiary px-3 pt-3 d-inline-flex ms-2 me-3 mb-3 w-100">
+                            <img src="/images/주호초이.png" alt="이력서 사진" style="width: 188px; height: 226px;">
+                            <table class="jh_resume_table">
+                                <tr>
+                                    <td>이름</td>
+                                    <td>최주호</td>
+                                </tr>
+                                <tr>
+                                    <td>생년월일</td>
+                                    <td>1986-02-01</td>
+                                </tr>
+                                <tr>
+                                    <td>연락처</td>
+                                    <td>010-1234-5678</td>
+                                </tr>
+                                <tr>
+                                    <td>주소</td>
+                                    <td>부산시 부산진구 모처</td>
+                                </tr>
+                                <tr>
+                                    <td>이메일</td>
+                                    <td><a href="mailto:ssar@nate.com"
+                                            style=" color: black; font-weight: bold;">ssar@nate.com</a></td>
+                                </tr>
+                            </table>
+                        </div>
+                        <div class="mt-5">
+                            <h4>포트폴리오 주소</h4>
+                            <a href="#"
+                                style=" color: black; font-weight: bold;">https://github.com/codingspecialist</a>
+                        </div>
+                        <div class="mt-5 jh_resume_skill">
+                            <h4>기술스택</h4>
+                            <div>
+                                <ul>
+                                    <!-- 반복문 -->
+                                    <li>JAVA</li>
+                                    <li>Flutter</li>
+                                </ul>
+                            </div>
+                        </div>
+                        <div class="mt-5">
+                            <h4>자기소개</h4>
+                            <textarea name="resume_content" class="w-100 opacity-50" rows="10" readOnly>From now on, Let me introduce my self~
+                           </textarea>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div>
+                <div class="card mt-4 p-4 ms-2 shadow" style="width:350px;">
+                    <div class="d-flex justify-content-between m-1">
+                        <h4><b>회사 취직을 원해요</b></h4>
+                    </div>
+                    <div class="d-flex justify-content-between m-1 mb-3">
+                        <div class="mt-5">
+                            <button type="button" class="btn btn-sm">
+                                <!-- 따봉, 노따봉 선택 -->
+                                <i class="fa-regular fa-thumbs-up fa-2xl" id="" value=""></i>
+                                <!-- <i class="fa-solid scrap_icon fa-thumbs-up fa-2xl" id=""
+                                    value=""></i> -->
+                            </button>
+                        </div>
+                    </div>
+
+
+
+
+                    <!-- 지원하기 버튼 -->
+                    <button type="button" class="btn btn-primary" data-bs-toggle="modal" data-bs-target="#myModal"
+                        style="height: 50px; background-color: #47D4D4;">
+                        스카우트하기
+                    </button>
+                    <!-- 지원하기 모달 -->
+                    <!-- The Modal -->
+                    <div class="modal" id="myModal">
+                        <div class="modal-dialog">
+                            <div class="modal-content" style="width: 800px;">
+                                <!-- Modal Header -->
+                                <div class="modal-header">
+                                    <h4 class="modal-title">Modal Heading</h4>
+                                    <button type="button" class="btn-close" data-bs-dismiss="modal"></button>
+                                </div>
+                                <!-- Modal body -->
+                                <div class="modal-body">
+                                    <div class="px-5 mt-5">
+                                        <h5><b>구직 제안 메일 제목</b></h5>
+                                        <input class="form-control" type="text" name="title" required>
+                                        <div class="pt-4">
+                                            <hr class="d-inline-flexw-100">
+                                        </div>
+                                        <div class="pt-2 mt-4">
+                                            <div class="mt-4">
+                                                <h5><b>메일 내용</b></h5>
+                                                <div class="border border-tertiary p-3 d-inline-flex me-3 mb-3 w-100">
+                                                    <input class="form-control border-0" type="text" name="cIntro"
+                                                        required>
+                                                </div>
+                                            </div>
+                                            <div class="mt-4">
+                                                <h5><b>채용공고 선택</b></h5>
+                                                <select name="pay" class="jm_select selectpicker" data-style="btn-info"
+                                                    style=" height: 35px;">
+                                                    <option value="면접 후 결정" selected>웹디자이너</option>
+                                                    <option value="2000만원">프로그래머</option>
+                                                    <option value="3000만원">회계</option>
+                                                    <option value="4000만원">경영</option>
+                                                </select>
+                                            </div>
+                                            <div class="mt-4 mb-4">
+                                                <h5><b>기업 정보</b></h5>
+                                                <div
+                                                    class="border border-tertiary ps-5 pe-2 pt-3 d-inline-flex mb-3 w-100">
+                                                    <table class="table table-borderless pt-5 ms-5">
+                                                        <tr class="pb-5">
+                                                            <th>사원수</th>
+                                                            <td>25명</td>
+                                                            <th>대표자</th>
+                                                            <td>최주호</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>설립년도</th>
+                                                            <td>2020-03-05</td>
+                                                            <th>전화번호</th>
+                                                            <td>010-1234-5678</td>
+                                                        </tr>
+                                                        <tr>
+                                                            <th>주소</th>
+                                                            <td>부산시 해운대구 모처</td>
+                                                            <th>이메일</th>
+                                                            <td>ssar@nate.com</td>
+                                                        </tr>
+                                                    </table>
+                                                </div>
+                                            </div>
+                                            <div class="text-center mt-5 mb-5">
+                                                <button type="submit" class="btn btn-dark w-50">메일보내기</button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+
+
+
+
+
+                </div>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>
